@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'main-drawer.dart';
 import './couleur.dart';
+import './menu-dashboard.dart';
 
 
 void main(){
-  runApp(MaterialApp(home: MyApp(),));
+  runApp(MaterialApp(home: MenuDashboardPage(),));
 }
 
 class MyApp extends StatelessWidget{
@@ -47,51 +48,84 @@ class MyApp extends StatelessWidget{
         backgroundColor: couleurPricipal ,
         ),
         body: Container(
-          margin: EdgeInsets.symmetric(vertical: 20.0),
-          height: 100.0,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
+          width: MediaQuery.of(context).size.width,
+          color: Colors.grey[200],
+          padding: EdgeInsets.only(top: 20.0),
+          child: Column(
             children: <Widget>[
+
               Container(
-                width: 160.0,
-                //color: Colors.red,
-                child: Card(
-                  color: Colors.blueAccent,
-                  elevation: 8.0,
-                  shadowColor: Colors.transparent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20) ),
+                padding: EdgeInsets.only(top: 20.0, left: 10.0),
+                width: MediaQuery.of(context).size.width,
+                color: Colors.white,
+                child: Text("Tableau de bord", style: TextStyle(fontSize: 18.0),),
+              ),
+              Container(
+                color: Colors.white,
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 20.0),
+                  height: 100.0,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      Container(
+                        width: 220.0,
+                        //color: Colors.red,
+                        child: Card(
+                          color: Colors.blueAccent,
+                          elevation: 8.0,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20) ),
+                          ),
+                          child: ListTile(
+                            title: Text('test'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 180.0,
+                        //color: Colors.red,
+                        child: Card(
+                          color: Color.fromARGB(254,235, 205, 178),
+                          elevation: 8.0,
+                          shadowColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20) ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 160.0,
+                        color: Colors.blue,
+                      ),
+                      Container(
+                        width: 160.0,
+                        color: Colors.green,
+                      ),
+                      Container(
+                        width: 160.0,
+                        color: Colors.yellow,
+                      ),
+                      Container(
+                        width: 160.0,
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
                 ),
               ),
               Container(
-                width: 180.0,
-                //color: Colors.red,
-                child: Card(
-                  color: Color.fromARGB(254,235, 205, 178),
-                  elevation: 8.0,
-                  shadowColor: Colors.transparent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20) ),
-                  ),
+                padding: EdgeInsets.only(top: 20.0, left: 10.0),
+                child: ListTile(
+                  trailing: Text("25/10/2020 8h20min", style: TextStyle(fontSize: 10),),
+                  subtitle: Text("20 tonnes, 30kg de seudeu, 300kg de tiof"),
+                  title: Text("Opération Entrante"),
+                  leading: Icon(Icons.arrow_downward, color: Colors.green,),
+                  //trailing: Icon(Icons.arrow_downward, color: Colors.green,),
                 ),
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.blue,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.green,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.yellow,
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.orange,
-              ),
+              )
+
             ],
           ),
         ),
