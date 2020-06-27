@@ -23,6 +23,20 @@ class _MenuDashboardPageState extends State<MenuDashboardPage> with SingleTicker
   Animation<double> _menuScaleAnimation;
   Animation<Offset> _slideAnimation;
 
+  var quiz = [
+    {"title": "Conteneur 1", "numero": "00001", "taille":"14 pieds"},
+    {"title": "Conteneur 2", "numero": "00002", "taille":"32 pieds"},
+    {"title": "Conteneur 3", "numero": "00003", "taille":"13 pieds"},
+    {"title": "Conteneur 4", "numero": "00004", "taille":"28 pieds"},
+    {"title": "Conteneur 5", "numero": "00005", "taille":"32 pieds"},
+    {"title": "Conteneur 7", "numero": "00005", "taille":"32 pieds"},
+    {"title": "Conteneur 8", "numero": "00005", "taille":"32 pieds"},
+    {"title": "Conteneur 9", "numero": "00005", "taille":"32 pieds"},
+    {"title": "Conteneur 10", "numero": "00005", "taille":"32 pieds"},
+    {"title": "Conteneur 11", "numero": "00006", "taille":"14 pieds"}
+
+  ];
+
 
 
   @override
@@ -104,13 +118,39 @@ class _MenuDashboardPageState extends State<MenuDashboardPage> with SingleTicker
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: /*isCollapsed ? [] :*/  <Widget>[
-                  Text("Dashboard", style: TextStyle(color: couleurEcriture, fontSize: 22),),
+                  Text("Menu", style: TextStyle(color: Colors.black54 ,fontWeight: FontWeight.bold , fontSize: 26),),
+                  SizedBox(height: 30,),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.dashboard, color: couleurEcriture,),
+                      SizedBox(width: 10,),
+                      Text("Dashboard", style: TextStyle(color: couleurEcriture, fontSize: 22),)
+                    ],
+                  ),
                   SizedBox(height: 10,),
-                  Text("Paramètre", style: TextStyle(color: couleurEcriture, fontSize: 22),),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.settings, color: couleurEcriture,),
+                      SizedBox(width: 10,),
+                      Text("Paramètre", style: TextStyle(color: couleurEcriture, fontSize: 22),)
+                    ],
+                  ),
                   SizedBox(height: 10,),
-                  Text("A propos", style: TextStyle(color: couleurEcriture, fontSize: 22),),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.thumb_up, color: couleurEcriture,),
+                      SizedBox(width: 10,),
+                      Text("A propos", style: TextStyle(color: couleurEcriture, fontSize: 22),)
+                    ],
+                  ),
                   SizedBox(height: 10,),
-                  Text("Nous contacter", style: TextStyle(color: couleurEcriture, fontSize: 22),),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.mail, color: couleurEcriture,),
+                      SizedBox(width: 10,),
+                      Text("Nous contacter", style: TextStyle(color: couleurEcriture, fontSize: 22),)
+                    ],
+                  ),
                 ],
               )
           ),
@@ -144,7 +184,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage> with SingleTicker
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Text('Tableau de borad', style: TextStyle(color: Colors.black54, fontSize: 20),),
+                        Text('Tableau de borad', style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
                         Icon(Icons.dashboard, color: Colors.black54,),
                       ],
                     ),
@@ -340,7 +380,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage> with SingleTicker
                     SizedBox(height: 20,),
                     Container(
                       color: Colors.grey[100],
-                      child: ListView.separated(
+                      child:  ListView.separated(
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           //physics: ClampingScrollPhysics(),
@@ -353,15 +393,16 @@ class _MenuDashboardPageState extends State<MenuDashboardPage> with SingleTicker
                                 shadowColor: backgroundColor,
                                 child: ListTile(
                                   leading: Icon(Icons.arrow_downward, color: Colors.green,),
-                                  title: Text("Entante"),
-                                  subtitle: Text("5 produits"),
-                                  trailing: Text("29-Jun-2020 7h:30min"),
+                                  title: isCollapsed ? Text("${quiz[index]['title']}") : null,
+                                  subtitle: isCollapsed ? Text("${quiz[index]['numero']}") : null,
+
+                                  trailing: Text("29-Jun-2020 7:30"),
                                 ),
                               ),
                             );
                           }, separatorBuilder: (context, index){
                             return Divider(height: 16,);
-                      }, itemCount: 10),
+                      }, itemCount: quiz.length),
                     ),
 
                   ],
